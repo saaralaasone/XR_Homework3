@@ -5,6 +5,13 @@ using UnityEngine;
 public class KeyPadButton : MonoBehaviour
 {
     // Start is called before the first frame update
+    public KeypadController keypadLock;
+    public string digitOrAction;
+
+    public void pressButton()
+    {
+        if (digitOrAction == null) ;
+    }
     void Start()
     {
         
