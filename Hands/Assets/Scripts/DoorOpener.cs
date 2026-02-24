@@ -13,7 +13,7 @@ public class DoorOpener : MonoBehaviour
     void Start()
     {
         closedRotation = transform.localRotation;
-        openRotation = Quaternion.Euler(transform.localEulerAngles + new Vector3(0, openAngle, 0));
+        openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
     }
 
     public void OpenDoor()
@@ -25,10 +25,10 @@ public class DoorOpener : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator Open()
+    private IEnumerator Open()
     {
-        float t = 0;
-        while (t < 1)
+        float t = 0f;
+        while (t < 1f)
         {
             t += Time.deltaTime * openSpeed;
             transform.localRotation = Quaternion.Slerp(closedRotation, openRotation, t);

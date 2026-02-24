@@ -40,6 +40,9 @@ public class Hand : MonoBehaviour
         //teleport hands
         body.position = followTarget.position;
         body.rotation = followTarget.rotation;
+
+        body.isKinematic = true;
+        body.useGravity = false;
     }
 
     // Update is called once per frame
@@ -52,11 +55,16 @@ public class Hand : MonoBehaviour
     private void PhysicsMove()
     {
         //position
+        /*
         var positionWithOffset = followTarget.TransformPoint(positionOffset); //followTarget.position + positionOffset;
         var distance = Vector3.Distance(positionWithOffset, transform.position);
         body.velocity = (positionWithOffset - transform.position).normalized * (followSpeed * distance);
+        */
+        var targetPos = followTarget.TransformPoint(positionOffset);
+        transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
 
         //rotation
+        /*
         var rotationWithOffset = followTarget.rotation * Quaternion.Euler(rotationOffset);
         var q = rotationWithOffset * Quaternion.Inverse(body.rotation);
         q.ToAngleAxis(out float angle, out Vector3 axis);
@@ -64,7 +72,9 @@ public class Hand : MonoBehaviour
         {
             if (angle>180.0f) { angle -= 360.0f; }
             body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
-        }
+        }*/
+        var targetRot = followTarget.rotation * Quaternion.Euler(rotationOffset);
+        transform.rotation = Quaternion.Lerp(transform.rotation,targetRot, followSpeed * Time.deltaTime);
 
     }
 
