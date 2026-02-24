@@ -1,9 +1,3 @@
-Trying to figure out hands (https://www.youtube.com/watch?v=DxKWq7z4Xao)
+XR System HW3: Hands and Physics game
 
-Cube added
-
-Animation for grip and trigger done
-
-Added hand colliders
-
-Can move
+This homework has more game focus than hand focus Animated hands, added hand colliders and some hand interactions. The objective for this game is to escape the room by finding hints hidden around the room. Utilizes grabbing and magnifying glass from previous homework. 
